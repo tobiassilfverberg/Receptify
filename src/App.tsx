@@ -1,7 +1,9 @@
+import CreateRecipe from "@pages/CreateRecipe"
+
 function App() {
 	return (
 		<div className="App">
-			Hello World
+			<CreateRecipe />
 		</div>
 	)
 }
