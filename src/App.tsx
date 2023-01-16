@@ -1,3 +1,4 @@
+import '@styles/App.scss'
 import CreateRecipe from "@pages/CreateRecipe"
 
 function App() {
