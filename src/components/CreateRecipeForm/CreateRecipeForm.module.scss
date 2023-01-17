@@ -1,0 +1,41 @@
+.root {
+	margin: 0;
+
+	&__inputField100 {
+		width: 100%;
+	}
+
+	&__inputField50 {
+		width: 50%;
+	}
+
+	&__inputField25 {
+		width: 25%;
+	}
+
+	// Tablet screen size
+	@media only screen and (min-width: 768px) {
+		&__inputField100 {
+			width: 50%;
+		}
+
+		&__inputField50 {
+			width: 25%;
+		}
+
+		&__textArea {
+			width: 50%;
+		}
+	}
+
+	// Laptop screen size
+	@media only screen and (min-width: 992px) {
+
+	}
+
+	// Larger screen sizes
+	@media only screen and (min-width: 1200px) {
+
+	}
+
+}
