@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { db } from '@firebase/index'
 
-import { CreateRecipeFormProps, Inputs } from './CreateRecipeForm.types'
+import { CreateRecipeFormProps } from './CreateRecipeForm.types'
 
 import styles from './CreateRecipeForm.module.scss'
 
@@ -23,15 +23,15 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 		formState: { errors },
 		reset,
 		watch,
-	} = useForm<Inputs>()
+	} = useForm<Recipe>()
 
-	const onSubmit: SubmitHandler<Inputs> = async data => {
+	const onSubmit: SubmitHandler<Recipe> = async data => {
 		try {
 			await addDoc(collection(db, 'recipes'), {
 				title: data.title,
-				portions: data.portions,
-				cookingTime: data.cookingTime,
-				numberOfIngredients: data.numberOfIngredients,
+				portions: Number(data.portions),
+				cookingTime: Number(data.cookingTime),
+				numberOfIngredients: Number(data.numberOfIngredients),
 				ingredients: data.ingredients,
 				tags: data.tags,
 				instructions: data.instructions,
