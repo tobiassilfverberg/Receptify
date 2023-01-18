@@ -1,10 +1,18 @@
-import '@styles/App.scss'
+import { Routes, Route } from 'react-router-dom'
 import CreateRecipe from "@pages/CreateRecipe"
+import LoginUserPage from '@pages/LoginUserPage'
+import RegisterUserPage from '@pages/RegisterUserPage'
+import '@styles/App.scss'
 
 function App() {
 	return (
 		<div className="App">
-			<CreateRecipe />
+			<Routes>
+				{/* <Route path="/" element={<HomePage />} /> */}
+				<Route path="/loggain" element={<LoginUserPage />} />
+				<Route path="/registrera" element={<RegisterUserPage />} />
+				<Route path="/skaparecept" element={<CreateRecipe />} />
+			</Routes>
 		</div>
 	)
 }
