@@ -20,6 +20,8 @@
       "@firebase/*": ["./src/firebase/*"],
       "@pages/*": ["./src/pages/*"],
       "@styles/*": ["./src/styles/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@contexts/*": ["./src/contexts/*"],
     }
   },
   "include": ["src"],
