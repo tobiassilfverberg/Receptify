@@ -4,18 +4,18 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { collection, addDoc, Timestamp } from 'firebase/firestore'
-import { db } from '@firebase/index'
-
 import { CreateRecipeFormProps } from './CreateRecipeForm.types'
-
 import styles from './CreateRecipeForm.module.scss'
+import useUploadRecipe from '../../hooks/useUploadRecipe'
 
-const tagArray = ["Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur"]
+const tagArray = ["Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
 
 const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
-	const [error, setError] = useState(false)
 	const [ingredientCount, setIngredientCount] = useState<string[]>()
+	const [imageFile, setImageFile] = useState<File | undefined>()
+	// const [uploadProgress, setUploadProgress] = useState()
+
+	const { uploadRecipe, error } = useUploadRecipe()
 
 	const {
 		register,
@@ -25,22 +25,19 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 		watch,
 	} = useForm<Recipe>()
 
-	const onSubmit: SubmitHandler<Recipe> = async data => {
-		try {
-			await addDoc(collection(db, 'recipes'), {
-				title: data.title,
-				portions: Number(data.portions),
-				cookingTime: Number(data.cookingTime),
-				numberOfIngredients: Number(data.numberOfIngredients),
-				ingredients: data.ingredients,
-				tags: data.tags,
-				instructions: data.instructions,
-				createdAt: Timestamp.now(),
-			})
-		} catch (err: any) {
-			setError(err)
+	const handleFileChange = (e: any) => {
+		if (e.target.files[0] && e.target.files[0].size < 10000000) {
+			setImageFile(e.target.files[0])
 		}
-		console.log(data)
+		console.log("Ny fil!", e.target.files[0])
+	}
+
+	const onSubmit: SubmitHandler<Recipe> = async data => {
+		if(!imageFile) {
+			return
+		}
+
+		uploadRecipe(data, imageFile)
 
 		reset()
 	}
@@ -84,6 +81,22 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 					className={`${styles.root__inputField100}`}
 				/>
 				<Form.Text>Vad är receptets namn</Form.Text>
+			</Form.Group>
+
+			<Form.Group controlId="image" className="mb-3">
+				<Form.Label>Välj en bild till receptet</Form.Label>
+				<Form.Control
+					type="file"
+					onChange={handleFileChange}
+				/>
+
+				<Form.Text className="text-muted">
+					{
+						imageFile
+						? `${imageFile.name} (${Math.round(imageFile.size/1024)} kB)`
+						: 'Ingen bild vald'
+					}
+				</Form.Text>
 			</Form.Group>
 
 			<Form.Group controlId='portions' className="mb-3">
