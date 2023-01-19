@@ -1,5 +1,6 @@
 interface Recipe {
 	title: string,
+	imageRef: string,
 	portions: number,
 	cookingTime: number,
 	numberOfIngredients: number,
