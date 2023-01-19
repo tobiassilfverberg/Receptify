@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { CreateRecipeFormProps } from './CreateRecipeForm.types'
 import styles from './CreateRecipeForm.module.scss'
-import useUploadRecipe from '../../hooks/useUploadRecipe'
+import useUploadRecipe from '@hooks/useUploadRecipe'
 
 const tagArray = ["Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
 

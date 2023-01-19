@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { useAuthContext } from '../../contexts/AuthContext'
+import { useAuthContext } from '@contexts/AuthContext'
 
 import { User } from './LoginUserForm.types'
 import styles from './LoginUserForm.module.scss'
