@@ -17,8 +17,6 @@ const useGetRecipes = () => {
 				}
 			})
 
-			console.log(docs)
-
 			setRecipes(docs)
 			setLoading(false)
 		})
