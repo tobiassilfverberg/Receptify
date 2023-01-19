@@ -12,10 +12,9 @@
 		flex-wrap: wrap;
 	}
 
-	// img {
-	// 	height: 10%;
-	// 	width: 10%;
-	// }
+	&__cardImg {
+		height: 40vh;
+	}
 
 	&__recipeCard {
 		width: 90%;
