@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Alert, Button, Card, Container, Form } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -22,7 +22,7 @@ const LoginUserForm = () => {
 		try {
 			setLoading(true)
 			await login(data.email, data.password)
-			navigate('/skaparecept')
+			navigate('/')
 		} catch (err: any) {
 			setError(err.message)
 			setLoading(false)
@@ -30,7 +30,7 @@ const LoginUserForm = () => {
 
 	}
 	return (
-		<Container className={`${styles.root__container} py-3 d-flex justify-content-center align-items-center`}>
+		<Container className={`${styles.root__container}`}>
 			<Card className='w-75'>
 				<Card.Body>
 					<Card.Title className='mb-3'>
@@ -76,9 +76,15 @@ const LoginUserForm = () => {
 					</Form>
 
 					<div className='text-center mt-3'>
-						{/* <Link to='/forgot-password'> */}
-							Forgot Password?
-						{/* </Link> */}
+						<Link to='/forgot-password'>
+							Glömt lösenord? Klicka här
+						</Link>
+					</div>
+
+					<div className='text-center mt-3'>
+						<Link to='/registrera'>
+							Inget konto? Klicka här för att registrera dig
+						</Link>
 					</div>
 				</Card.Body>
 			</Card>
