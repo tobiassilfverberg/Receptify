@@ -1,20 +1,22 @@
 import { useState } from 'react'
 import { Alert, Button, Card, Container, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { User } from './RegisterUserForm.types'
 
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { useAuthContext } from '@contexts/AuthContext'
 import { collection, addDoc } from 'firebase/firestore'
-import { auth, db } from '@firebase/index'
+import { db } from '@firebase/index'
 
 import styles from './RegisterUserForm.module.scss'
 
 const RegisterUserForm = () => {
 	const [error, setError] = useState<string>()
 	const [loadingCreateAdmin, setLoadingCreateAdmin] = useState(false)
+	const { register: registerUser } = useAuthContext()
+	const navigate = useNavigate()
 
 	const { register, handleSubmit, formState: { errors }, reset } = useForm<User>()
 
@@ -28,7 +30,7 @@ const RegisterUserForm = () => {
 		try {
 			setLoadingCreateAdmin(true)
 
-			await createUserWithEmailAndPassword(auth, data.email, data.password)
+			await registerUser(data.email, data.password)
 
 			await addDoc(collection(db, 'users'), {
 				email: data.email,
@@ -36,6 +38,7 @@ const RegisterUserForm = () => {
 			})
 
 			reset()
+			navigate("/loggain")
 			setLoadingCreateAdmin(false)
 		} catch (err) {
 			setLoadingCreateAdmin(false)

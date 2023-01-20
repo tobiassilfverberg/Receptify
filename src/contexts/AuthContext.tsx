@@ -13,6 +13,7 @@ import { auth } from "@firebase/index"
 interface AuthContextType {
 	currentUser: User | null,
 	login: (email: string, password: string) => Promise<UserCredential>,
+	register: (email: string, password: string) => Promise<UserCredential>,
 	signOutUser: () => {},
 }
 
@@ -64,6 +65,7 @@ const AuthContextProvider = ({ children }: any) => {
 		// here be everything the children needs/should be able to use
 		currentUser,
 		login,
+		register,
 		signOutUser,
 	}
 
