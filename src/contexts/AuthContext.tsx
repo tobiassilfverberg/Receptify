@@ -3,13 +3,17 @@ import { createContext, useContext, useEffect, useState } from "react"
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	signOut,
 	onAuthStateChanged,
 	UserCredential,
+	User,
 } from "firebase/auth"
 import { auth } from "@firebase/index"
 
 interface AuthContextType {
+	currentUser: User | null,
 	login: (email: string, password: string) => Promise<UserCredential>,
+	signOutUser: () => {},
 }
 
 const AuthContext = createContext<AuthContextType | null>(null)
@@ -19,7 +23,7 @@ const useAuthContext = () => {
 }
 
 const AuthContextProvider = ({ children }: any) => {
-	const [currentUser, setCurrentUser] = useState<any>()
+	const [currentUser, setCurrentUser] = useState<User | null>(null)
 	const [username, setUsername] = useState(null)
 	const [email, setEmail] = useState(null)
 	const [loading, setLoading] = useState(true)
@@ -30,6 +34,10 @@ const AuthContextProvider = ({ children }: any) => {
 
 	const login = (email: string, password: string) => {
 		return signInWithEmailAndPassword(auth, email, password)
+	}
+
+	const signOutUser = async () => {
+		await signOut(auth)
 	}
 
 	const reloadUser = async () => {
@@ -56,9 +64,7 @@ const AuthContextProvider = ({ children }: any) => {
 		// here be everything the children needs/should be able to use
 		currentUser,
 		login,
-		reloadUser,
-		username,
-		email,
+		signOutUser,
 	}
 
 	return (
