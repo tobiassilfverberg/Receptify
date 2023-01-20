@@ -23,11 +23,11 @@ const ShowRecipes = () => {
 		})
 
 		return () => subscription.unsubscribe()
-	}, [watch])
+	}, [watchTag])
 
-	// const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
-	// 	getRecipes(data.tags)
-	// }
+	const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
+		getRecipes(data.tags)
+	}
 
 	const onSearch: SubmitHandler<FieldValues> = (data: any) => {
 		const filtered = recipes?.filter((recipe: Recipe) => {
@@ -40,6 +40,10 @@ const ShowRecipes = () => {
 	}
 
 	useEffect(() => {
+		getRecipes(searchTag)
+	}, [searchTag])
+
+	useEffect(() => {
 		getRecipes('Alla')
 	}, [])
 
@@ -48,21 +52,27 @@ const ShowRecipes = () => {
 			<h4>Senast tillagda recept</h4>
 
 			<Form
-				// onSubmit={handleSubmit(onSubmit)}
+				onSubmit={handleSubmit(onSubmit)}
 				className={`${styles.root__searchForms}`}
 			>
 				<Form.Label>Välj tag</Form.Label>
 				<Form.Select
-					{...register('tags', {
-						required: false,
-					})}
+					{...register('tags')}
 					className="w-50"
+					// value={}
 				>
 					{tagArray.map((tag) => (
 						<option key ={`${tag}`} value={`${tag}`}>{`${tag}`}</option>
 					))}
 				</Form.Select>
-				<Button type="submit" className='mt-2'>Välj</Button>
+				<ButtonGroup>
+					<Button type="submit" className='mt-2'>Sök</Button>
+					<Button type="reset" className="mt-2" variant="warning" onClick={() =>{
+						setSearchTag('Alla')
+						getRecipes('Alla')
+					}
+					}>Återställ</Button>
+				</ButtonGroup>
 			</Form>
 
 			<Form onSubmit={handleSubmit(onSearch)} className={`${styles.root__searchForms}`}>
