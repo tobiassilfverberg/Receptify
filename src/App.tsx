@@ -4,6 +4,7 @@ import LandingPage from '@pages/LandingPage'
 import LoginUserPage from '@pages/LoginUserPage'
 import LogoutPage from '@pages/LogoutPage'
 import RegisterUserPage from '@pages/RegisterUserPage'
+import ShowRecipe from '@components/ShowRecipe'
 import RequireAuth from '@components/RequireAuth'
 import Navigation from '@components/Navigation'
 import '@styles/App.scss'
@@ -16,6 +17,7 @@ function App() {
 			<Routes>
 				{/* Public routes */}
 				<Route path="/" element={<LandingPage />} />
+				<Route path="/recept/:title" element={<ShowRecipe />} />
 				<Route path="/loggain" element={<LoginUserPage />} />
 				<Route path="/loggaut" element={<LogoutPage />} />
 				<Route path="/registrera" element={<RegisterUserPage />} />
