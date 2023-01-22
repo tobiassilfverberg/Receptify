@@ -1,4 +1,4 @@
-interface Recipe {
+interface Recipe extends DocumentData {
 	title: string,
 	imageRef: string,
 	portions: number,
