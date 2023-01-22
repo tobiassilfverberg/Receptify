@@ -21,6 +21,9 @@ const Navigation = () => {
 								<Nav.Link as={NavLink} end to="/skaparecept">
 									Skapa recept
 								</Nav.Link>
+								<Nav.Link as ={NavLink} end to="/minarecept">
+									Mina recept
+								</Nav.Link>
 								<Nav.Link as={NavLink} end to="/loggaut">
 									Logga ut
 								</Nav.Link>
