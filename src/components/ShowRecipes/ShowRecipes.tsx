@@ -6,7 +6,7 @@ import { Container, Button, ButtonGroup } from 'react-bootstrap'
 import useGetRecipes from '@hooks/useGetRecipes'
 import styles from './ShowRecipe.module.scss'
 
-const tagArray = ["Alla", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
+const tagArray = ["Alla", "Kyckling", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
 
 const ShowRecipes = () => {
 	const [searchInput, setSearchInput] = useState<string>('')
