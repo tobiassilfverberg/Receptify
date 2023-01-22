@@ -1,20 +1,26 @@
 .root {
 	&__main {
 		margin-top: 10px;
-		// width: 100vh;
 		text-align: center;
 	}
 
 	&__wrapper {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: space-around;
 		flex-wrap: wrap;
 	}
 
 	&__cardImg {
 		height: 40vh;
 	}
+
+	// &__card-title {
+	// 	height: 60%;
+	// 	overflow-wrap: break-word;
+	// 	word-wrap: break-word;
+	// 	word-break: break-word;
+	// }
 
 	&__recipeCard {
 		width: 90%;
@@ -60,7 +66,7 @@
 	// Larger screen sizes
 	@media only screen and (min-width: 1200px) {
 		&__recipeCard {
-			width: 20%;
+			width: 30%;
 		}
 	}
 }
