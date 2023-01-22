@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import { db, storage } from '@firebase/index'
+import { useAuthContext } from '@contexts/AuthContext'
 
 const useUploadRecipe = () => {
 	const [error, setError] = useState()
+	const { currentUser } = useAuthContext()
 
 	const uploadRecipe = ( data: Recipe, imageFile: File ) => {
 		const prefix = Date.now()
@@ -36,6 +38,7 @@ const useUploadRecipe = () => {
 					tags: data.tags,
 					instructions: data.instructions,
 					createdAt: Timestamp.now(),
+					createdBy: currentUser?.uid,
 				})
 			} catch (err: any) {
 				setError(err)
