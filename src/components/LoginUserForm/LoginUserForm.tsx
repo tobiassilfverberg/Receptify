@@ -76,12 +76,6 @@ const LoginUserForm = () => {
 					</Form>
 
 					<div className='text-center mt-3'>
-						<Link to='/forgot-password'>
-							Glömt lösenord? Klicka här
-						</Link>
-					</div>
-
-					<div className='text-center mt-3'>
 						<Link to='/registrera'>
 							Inget konto? Klicka här för att registrera dig
 						</Link>
