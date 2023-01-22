@@ -4,6 +4,7 @@ import LandingPage from '@pages/LandingPage'
 import LoginUserPage from '@pages/LoginUserPage'
 import LogoutPage from '@pages/LogoutPage'
 import RegisterUserPage from '@pages/RegisterUserPage'
+import MyRecipes from '@components/MyRecipes'
 import ShowRecipe from '@components/ShowRecipe'
 import RequireAuth from '@components/RequireAuth'
 import Navigation from '@components/Navigation'
@@ -26,6 +27,11 @@ function App() {
 				<Route path="/skaparecept" element={
 					<RequireAuth>
 						<CreateRecipe />
+					</RequireAuth>
+				} />
+				<Route path="/minarecept" element={
+					<RequireAuth>
+						<MyRecipes />
 					</RequireAuth>
 				} />
 			</Routes>
