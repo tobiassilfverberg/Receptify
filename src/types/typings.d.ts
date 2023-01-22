@@ -1,3 +1,5 @@
+import { DocumentData } from "firebase/firestore"
+
 interface Recipe extends DocumentData {
 	title: string,
 	imageRef: string,
