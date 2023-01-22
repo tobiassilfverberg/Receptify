@@ -9,6 +9,7 @@ import useUploadRecipe from '@hooks/useUploadRecipe'
 const tagArray = ["Kyckling", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
 
 const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
+	const [creatingRecipe, setCreatingRecipe] = useState<boolean>(false)
 	const [ingredientCount, setIngredientCount] = useState<string[]>()
 	const [imageFile, setImageFile] = useState<File | undefined>()
 
@@ -29,6 +30,7 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 	}
 
 	const onSubmit: SubmitHandler<Recipe> = async data => {
+		setCreatingRecipe(true)
 		if(!imageFile) {
 			return
 		}
@@ -36,6 +38,7 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 		uploadRecipe(data, imageFile)
 
 		reset()
+		setCreatingRecipe(false)
 	}
 
 	const watchIngredientCount = Number(watch(["numberOfIngredients"]))
@@ -210,7 +213,7 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 			</Form.Group>
 
 			{error && <Alert className='danger'>{error}</Alert>}
-			<Button variant="success" type='submit'>Submit</Button>
+			<Button disabled={creatingRecipe} variant="success" type='submit'>Submit</Button>
 		</Form>
 	)
 }
