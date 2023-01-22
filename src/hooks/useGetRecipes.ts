@@ -20,7 +20,7 @@ const useGetRecipes = () => {
 		setLoading(true)
 
 		if(searchTag === "Alla") {
-			setQueryRef(query(collection(db, 'recipes'), orderBy('createdAt', 'desc'), limit(10)))
+			setQueryRef(query(collection(db, 'recipes'), orderBy('createdAt', 'desc'), limit(9)))
 		} else {
 			setQueryRef(query(collection(db, 'recipes'), orderBy('createdAt', 'desc'), where('tags', 'array-contains-any', [`${searchTag}`])))
 		}
