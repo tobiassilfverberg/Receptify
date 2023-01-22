@@ -16,7 +16,7 @@ const ShowRecipe = () => {
 	}, [])
 
 	if(!data) {
-		return
+		return null
 	} else {
 		return (
 			<RecipeCard recipe={data} />
