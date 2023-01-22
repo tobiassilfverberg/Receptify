@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import Alert from 'react-bootstrap/Alert'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
+import { Alert, Button, Form } from 'react-bootstrap'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { CreateRecipeFormProps } from './CreateRecipeForm.types'
@@ -13,7 +11,6 @@ const tagArray = ["Kyckling", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ri
 const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 	const [ingredientCount, setIngredientCount] = useState<string[]>()
 	const [imageFile, setImageFile] = useState<File | undefined>()
-	// const [uploadProgress, setUploadProgress] = useState()
 
 	const { uploadRecipe, error } = useUploadRecipe()
 
@@ -29,7 +26,6 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 		if (e.target.files[0] && e.target.files[0].size < 10000000) {
 			setImageFile(e.target.files[0])
 		}
-		console.log("Ny fil!", e.target.files[0])
 	}
 
 	const onSubmit: SubmitHandler<Recipe> = async data => {
