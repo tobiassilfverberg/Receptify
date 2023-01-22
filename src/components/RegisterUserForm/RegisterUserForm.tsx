@@ -34,7 +34,6 @@ const RegisterUserForm = () => {
 
 			await addDoc(collection(db, 'users'), {
 				email: data.email,
-				username: data.username,
 			})
 
 			reset()
@@ -65,20 +64,6 @@ const RegisterUserForm = () => {
 									}
 								})}
 								type="email"
-							/>
-						</Form.Group>
-
-						<Form.Group id="username" className="mb-1">
-							<Form.Label>Användarnamn</Form.Label>
-							<Form.Control
-								{...register("username", {
-									required: "Du måste ange ett namn",
-									minLength: {
-										value: 3,
-										message: "Du måste ange en normalt namn"
-									}
-								})}
-								type="text"
 							/>
 						</Form.Group>
 
