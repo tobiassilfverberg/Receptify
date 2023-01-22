@@ -8,7 +8,7 @@ import { CreateRecipeFormProps } from './CreateRecipeForm.types'
 import styles from './CreateRecipeForm.module.scss'
 import useUploadRecipe from '@hooks/useUploadRecipe'
 
-const tagArray = ["Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
+const tagArray = ["Kyckling", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
 
 const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 	const [ingredientCount, setIngredientCount] = useState<string[]>()
@@ -169,6 +169,7 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 								<option value='tsk'>tsk</option>
 								<option value='msk'>msk</option>
 							</optgroup>
+							<option value="st">st</option>
 						</Form.Select>
 
 						<Form.Control
