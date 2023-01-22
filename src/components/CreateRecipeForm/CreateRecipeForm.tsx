@@ -144,6 +144,7 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 								required: "Mängd behövs"
 							})}
 							type="number"
+							step="0.5"
 							placeholder='Mängd'
 							className={`${styles.root__inputField25} me-2`}
 						/>
@@ -165,8 +166,9 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 								<option value='dl'>dl</option>
 								<option value='cl'>cl</option>
 								<option value='ml'>ml</option>
-								<option value='tsk'>tsk</option>
 								<option value='msk'>msk</option>
+								<option value='tsk'>tsk</option>
+								<option value='krm'>krm</option>
 							</optgroup>
 							<option value="st">st</option>
 						</Form.Select>
