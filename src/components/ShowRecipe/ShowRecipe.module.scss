@@ -27,8 +27,8 @@
 	}
 
 	&__recipeImg {
-		height: 30%;
-		width: 90%;
+		max-height: 40vh;
+		max-width: 90%;
 		margin: auto;
 		margin-top: 10px;
 	}
@@ -47,8 +47,8 @@
 	// Tablet screen size
 	@media only screen and (min-width: 768px) {
 		&__recipeImg {
-			height: 50vh;
-			width: 90%;
+			max-height: 50vh;
+			max-width: 90%;
 		}
 
 		&__box {
@@ -64,7 +64,7 @@
 		@media only screen and (min-width: 992px) {
 			&__recipeImg {
 				height: 50vh;
-				width: 60%;
+				max-width: 80%;
 			}
 
 			&__box {
@@ -73,6 +73,7 @@
 				&__infoTextLG {
 					text-align: center;
 					padding: 10px;
+					margin-top: 10px;
 				}
 			}
 		}
