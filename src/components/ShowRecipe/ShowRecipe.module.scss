@@ -1,0 +1,85 @@
+.root {
+	&__textUnderline {
+		text-decoration: underline;
+		font-size: 18px;
+	}
+
+	&__cardTitle {
+		text-align: center;
+		font-size: 24px !important;
+	}
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	&__infoTextSM {
+		margin-top: 5px;
+		text-align: center;
+		width: 50%;
+	}
+
+	&__infoTextLG {
+		margin-top: 5px;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__recipeImg {
+		height: 30%;
+		width: 90%;
+		margin: auto;
+		margin-top: 10px;
+	}
+
+	&__portionCounter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__spanButton {
+		font-size: 26px;
+		margin: 0px 10px 0px 10px;
+	}
+
+	// Tablet screen size
+	@media only screen and (min-width: 768px) {
+		&__recipeImg {
+			height: 50vh;
+			width: 90%;
+		}
+
+		&__box {
+			display: flex;
+
+			&__infoTextLG {
+				text-align: center;
+				padding: 10px;
+			}
+		}
+
+		// Laptop screen size
+		@media only screen and (min-width: 992px) {
+			&__recipeImg {
+				height: 50vh;
+				width: 60%;
+			}
+
+			&__box {
+				display: flex;
+
+				&__infoTextLG {
+					text-align: center;
+					padding: 10px;
+				}
+			}
+		}
+
+		// Larger screen sizes
+		@media only screen and (min-width: 1200px) {
+
+		}
+	}
+}
