@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Alert, Button, Form } from 'react-bootstrap'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { Recipe } from "../../types/typings"
 
-import { CreateRecipeFormProps } from './CreateRecipeForm.types'
 import styles from './CreateRecipeForm.module.scss'
 import useUploadRecipe from '@hooks/useUploadRecipe'
 
 const tagArray = ["Kyckling", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
 
-const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
+const CreateRecipeForm = () => {
 	const [creatingRecipe, setCreatingRecipe] = useState<boolean>(false)
 	const [ingredientCount, setIngredientCount] = useState<string[]>()
 	const [imageFile, setImageFile] = useState<File | undefined>()
@@ -41,10 +41,10 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 		setCreatingRecipe(false)
 	}
 
-	const watchIngredientCount = Number(watch(["numberOfIngredients"]))
+	const watchIngredientCount = Number(watch("numberOfIngredients"))
 
 	useEffect(() => {
-		const subscription = watch((value) => {
+		const subscription = watch((value: any) => {
 			let data = []
 			let length = Number(value.numberOfIngredients)
 
@@ -55,13 +55,13 @@ const CreateRecipeForm = ({ className }:CreateRecipeFormProps) => {
 			setIngredientCount(data)
 		})
 
-		return () => subscription.unsubscribe()
+		// return () => subscription.unsubscribe()
 	}, [watchIngredientCount])
 
 	return (
 		<Form
 			className={
-				`${styles.root, className} p-1 w-100`
+				`${styles.root} p-1 w-100`
 			}
 			onSubmit={handleSubmit(onSubmit)}
 		>

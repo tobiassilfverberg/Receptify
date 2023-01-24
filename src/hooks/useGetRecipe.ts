@@ -12,9 +12,10 @@ import { collection,
 	where }
 from 'firebase/firestore'
 import { db } from "@firebase/index"
+import { Recipe } from "../types/typings"
 
 const useGetRecipe = () => {
-	const [data, setData] = useState<DocumentData | null>(null)
+	const [data, setData] = useState<Recipe | null>(null)
 
 	const getRecipe = async (title: string) => {
 		const q = query(collection(db, "recipes"), where("title", "==", title))
@@ -25,7 +26,7 @@ const useGetRecipe = () => {
 
 		const querySnapshot = await getDocs(q)
 		querySnapshot.forEach((doc) => {
-			setData(doc.data())
+			setData(doc.data() as Recipe)
 		})
 	}
 

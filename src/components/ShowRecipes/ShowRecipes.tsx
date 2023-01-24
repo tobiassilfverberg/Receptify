@@ -4,6 +4,8 @@ import { SubmitHandler, useForm, FieldValues } from 'react-hook-form'
 import RecipeCard from './RecipeCard'
 import { Container, Button, ButtonGroup } from 'react-bootstrap'
 import useGetRecipes from '@hooks/useGetRecipes'
+// import { RecipeCardProps } from './RecipeCard.types'
+import { Recipe } from "../../types/typings"
 import styles from './ShowRecipe.module.scss'
 
 const tagArray = ["Alla", "Kyckling", "Torsk", "Fläsk", "Nöt", "Pasta", "Potatis", "Ris", "Korv", "Lax", "Vegetariskt", "Köttfärs", "Skaldjur", "Frukost", "Lunch", "Mellanmål", "Förrätt", "Varmrätt", "Efterrätt", "Bakverk"]
@@ -32,7 +34,7 @@ const ShowRecipes = () => {
 	const onSearch: SubmitHandler<FieldValues> = (data: any) => {
 		const filtered = recipes?.filter((recipe: Recipe) => {
 			return (
-				recipe.title.toLowerCase().includes(data.searchName.toLowerCase())
+				recipe.recipe.title.toLowerCase().includes(data.searchName.toLowerCase())
 			)
 		})
 
@@ -59,7 +61,6 @@ const ShowRecipes = () => {
 				<Form.Select
 					{...register('tags')}
 					className="w-50"
-					// value={}
 				>
 					{tagArray.map((tag) => (
 						<option key ={`${tag}`} value={`${tag}`}>{`${tag}`}</option>
@@ -104,7 +105,7 @@ const ShowRecipes = () => {
 				<div className={`${styles.root__wrapper}`}>
 
 					{filteredRecipes?.map((recipe: Recipe) => (
-						<RecipeCard key={recipe.title} recipe={recipe} />
+						<RecipeCard key={recipe.recipe.title} recipe={recipe.recipe} />
 					))}
 
 				</div>
@@ -112,7 +113,7 @@ const ShowRecipes = () => {
 				<div className={`${styles.root__wrapper}`}>
 
 					{recipes?.map((recipe: Recipe) => (
-						<RecipeCard key={recipe.title} recipe={recipe} />
+						<RecipeCard key={recipe.recipe.title} recipe={recipe.recipe} />
 					))}
 
 				</div>

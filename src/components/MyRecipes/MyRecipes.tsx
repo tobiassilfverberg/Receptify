@@ -3,6 +3,7 @@ import { Container, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import useGetMyRecipes from '@hooks/useGetMyRecipes'
 import styles from './MyRecipes.module.scss'
+import { Recipe } from "../../types/typings"
 
 const MyRecipes = () => {
 	const { getRecipes, recipes } = useGetMyRecipes()

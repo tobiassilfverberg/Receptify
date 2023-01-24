@@ -3,6 +3,7 @@ import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import { db, storage } from '@firebase/index'
 import { useAuthContext } from '@contexts/AuthContext'
+import { Recipe } from "../types/typings"
 
 const useUploadRecipe = () => {
 	const [error, setError] = useState()

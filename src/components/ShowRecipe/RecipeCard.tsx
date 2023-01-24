@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
-import { RecipeCardProps } from './RecipeCard.types'
+import { Recipe } from '../../types/typings'
 import styles from './ShowRecipe.module.scss'
 
-const RecipeCard = ({ recipe }: RecipeCardProps) => {
+interface IProps {
+	recipe: Recipe,
+}
+
+const RecipeCard: React.FC<IProps> = ({ recipe }) => {
 	const [portionsCount, setPortionsCount] = useState<number>(recipe.portions)
 
 	return (

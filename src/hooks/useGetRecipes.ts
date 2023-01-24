@@ -10,6 +10,7 @@ import { collection,
 	where }
 from 'firebase/firestore'
 import { db } from "@firebase/index"
+import { Recipe } from "../types/typings"
 
 const useGetRecipes = () => {
 	const [recipes, setRecipes] = useState<Recipe[] | null>(null)
