@@ -4,6 +4,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import { db, storage } from '@firebase/index'
 import { useAuthContext } from '@contexts/AuthContext'
 import { Recipe } from "../types/typings"
+import { v4 as uuidv4 } from 'uuid'
 
 const useUploadRecipe = () => {
 	const [error, setError] = useState()
@@ -40,6 +41,7 @@ const useUploadRecipe = () => {
 					instructions: data.instructions,
 					createdAt: Timestamp.now(),
 					createdBy: currentUser?.uid,
+					id: uuidv4(),
 				})
 			} catch (err: any) {
 				setError(err)

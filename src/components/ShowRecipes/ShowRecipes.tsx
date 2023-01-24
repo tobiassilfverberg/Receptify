@@ -4,7 +4,6 @@ import { SubmitHandler, useForm, FieldValues } from 'react-hook-form'
 import RecipeCard from './RecipeCard'
 import { Container, Button, ButtonGroup } from 'react-bootstrap'
 import useGetRecipes from '@hooks/useGetRecipes'
-// import { RecipeCardProps } from './RecipeCard.types'
 import { Recipe } from "../../types/typings"
 import styles from './ShowRecipe.module.scss'
 
@@ -105,7 +104,7 @@ const ShowRecipes = () => {
 				<div className={`${styles.root__wrapper}`}>
 
 					{filteredRecipes?.map((recipe: Recipe) => (
-						<RecipeCard key={recipe.recipe.title} recipe={recipe.recipe} />
+						<RecipeCard key={recipe.id} recipe={recipe} />
 					))}
 
 				</div>
@@ -113,7 +112,7 @@ const ShowRecipes = () => {
 				<div className={`${styles.root__wrapper}`}>
 
 					{recipes?.map((recipe: Recipe) => (
-						<RecipeCard key={recipe.recipe.title} recipe={recipe.recipe} />
+						<RecipeCard key={recipe.id} recipe={recipe} />
 					))}
 
 				</div>

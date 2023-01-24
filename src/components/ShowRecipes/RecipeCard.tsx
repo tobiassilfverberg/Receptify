@@ -8,6 +8,7 @@ interface IProps {
 }
 
 const RecipeCard: React.FC<IProps> = ({ recipe }) => {
+	console.log(recipe)
 	return (
 		<Card as={Link} to={`recept/${recipe.title}`} key={recipe.imageRef} className={`${styles.root__recipeCard}`}>
 			<Card.Img className={`${styles.root__cardImg}`} variant="top" src={recipe.imageRef ? recipe.imageRef : "https://via.placeholder.com/50"} />
