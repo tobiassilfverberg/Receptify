@@ -215,7 +215,7 @@ const CreateRecipeForm = () => {
 			</Form.Group>
 
 			{error && <Alert className='danger'>{error}</Alert>}
-			<Button disabled={creatingRecipe} variant="success" type='submit'>Submit</Button>
+			<Button disabled={creatingRecipe} variant="success" type='submit'>Skapa recept</Button>
 		</Form>
 	)
 }
