@@ -18,8 +18,10 @@ const MyRecipes = () => {
 			<h3>Mina recept</h3>
 			<ListGroup>
 				{recipes?.map((recipe: Recipe) => (
-					<ListGroupItem onClick={() => {
-					navigate(`/recept/${recipe.title}`)
+					<ListGroupItem
+					key={recipe.id}
+					onClick={() => {
+						navigate(`/recept/${recipe.title}`)
 					}}>
 					<div className={`${styles.root__flex}`}>
 						<div>
