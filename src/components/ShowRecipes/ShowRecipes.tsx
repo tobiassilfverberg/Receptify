@@ -33,7 +33,7 @@ const ShowRecipes = () => {
 	const onSearch: SubmitHandler<FieldValues> = (data: any) => {
 		const filtered = recipes?.filter((recipe: Recipe) => {
 			return (
-				recipe.recipe.title.toLowerCase().includes(data.searchName.toLowerCase())
+				recipe.title.toLowerCase().includes(data.searchName.toLowerCase())
 			)
 		})
 
@@ -92,12 +92,12 @@ const ShowRecipes = () => {
 					</ButtonGroup>
 			</Form>
 
-			{/* {loading && (
-				<p>Laddar recept</p>
-			)} */}
-
 			{(searchInput && filteredRecipes?.length === 0) && (
-				<p>Prova en annan sökning</p>
+				<h4>Prova en annan sökning</h4>
+			)}
+
+			{(searchTag && recipes?.length === 0) && (
+				<h4>Prova en annan sökning</h4>
 			)}
 
 			{filteredRecipes? (
